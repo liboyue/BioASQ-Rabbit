@@ -24,8 +24,8 @@ class BiRanker(Task):
     """
     __metaclass__ = abc.ABCMeta
 
-    def __init__(self, route=[], alpha=0.5, selected=10):
-        super(BiRanker, self).__init__(route)
+    def __init__(self, route=[], alpha=0.5, selected=10, host='localhost'):
+        super(BiRanker, self).__init__(route, host)
         self.alpha = alpha
         self.numSelectedSentences = selected
         self.logger.info('Created Task for %s', self.__class__.__name__)
@@ -56,18 +56,24 @@ class BiRanker(Task):
 
     def getSentences(self, question):
         self.logger.debug('Getting sentences for question %s', question.id)
+        '''
         sentences = []
-        # snippetsText = []
+        snippetsText = []
         for snippet in question.snippets: #['snippets']:
             text = unicode(snippet.text).encode("ascii", "ignore")
-            # snippetsText.append(text)
+            print(snippet)
+            snippetsText.append(text)
             if text == "":
                 continue
             try:
                 sentences += sent_tokenize(text)
             except:
                 sentences += text.split(". ")  # Notice the space after the dot
-        return sentences
+            print(sentences)
+            '''
+        return ([unicode(sent.text).encode("ascii", "ignore") for s in question.snippets for sent in s.sentences])
+        #return [s.sentences for s in question.snippets]
+        #return sentences
 
     def computePositions(self, snippets):
         pos_dict = {}
