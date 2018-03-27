@@ -18,8 +18,8 @@ class ResultsCollector(Task):
     it receives a ``SAVE`` command message.
     """
 
-    def __init__(self):
-        super(ResultsCollector, self).__init__('results')
+    def __init__(self, host='localhost'):
+        super(ResultsCollector, self).__init__('results', host=host)
         self.logger.info('Created Results task')
         self.count = 0
         self.questions = list()

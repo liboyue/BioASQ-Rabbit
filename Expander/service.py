@@ -4,16 +4,18 @@ from logging import config
 from Expander import NoneExpander
 #from SnomedctExpander import SnomedctExpander
 #from UMLSExpander import UMLSExpander
+import sys
 
 logging.config.fileConfig('logging.ini')
 
 if __name__ == "__main__":
     # Launch the tasks
     logger = logging.getLogger('main')
+    host = sys.argv[1]
     tasks = []
     #for cls in (NoneExpander, SnomedctExpander, UMLSExpander):
     cls = NoneExpander
-    instance = cls()
+    instance = cls(host)
     tasks.append(instance)
     logger.info('Staring service %s', cls.__name__)
     instance.start()

@@ -5,13 +5,15 @@
 from CoreMMR import CoreMMR
 from SoftMMR import SoftMMR
 from HardMMR import HardMMR
+import sys
 
 if __name__ == '__main__':
     print 'Declaring the services'
+    host = sys.argv[1]
     services = list()
-    services.append(CoreMMR())
-    services.append(SoftMMR())
-    services.append(HardMMR())
+    services.append(CoreMMR(host=host))
+    services.append(SoftMMR(host=host))
+    services.append(HardMMR(host=host))
 
     print 'Staring the services'
     for service in services:

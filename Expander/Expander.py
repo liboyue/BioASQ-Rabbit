@@ -23,8 +23,8 @@ class Expander(Task):
     # __metaclass__ = abc.ABCMeta
 
     # @classmethod
-    def __init__(self, route):  # constructor for the abstract class
-        super(Expander, self).__init__(route)
+    def __init__(self, route, host='localhost'):  # constructor for the abstract class
+        super(Expander, self).__init__(route, host)
         self.mm = SingletonMetaMap.Instance().mm
 
     def perform(self, input):
@@ -65,8 +65,8 @@ class Expander(Task):
 
 
 class NoneExpander(Expander):
-    def __init__(self):
-        super(NoneExpander, self).__init__('expand.none')
+    def __init__(self, host='localhost'):
+        super(NoneExpander, self).__init__('expand.none', host)
 
 
     def getExpansions(self, sentence):

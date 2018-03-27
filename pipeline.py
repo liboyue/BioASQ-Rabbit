@@ -5,8 +5,8 @@ from deiis.rabbit import Message, MessageBus
 from deiis.model import Serializer, DataSet, Question
 
 if __name__ == '__main__':
-    if len(sys.argv) == 1:
-        print 'Usage: python pipeline.py <data.json>'
+    if len(sys.argv) <= 2:
+        print 'Usage: python pipeline.py <data.json> <RabbitMQ_host>'
         exit(1)
 
     # filename = 'data/training.json'
@@ -17,9 +17,11 @@ if __name__ == '__main__':
     fp.close()
 
     # The list of services to send the questions to.
-    pipeline = ['mmr.core', 'tiler.concat', 'results']
+    rabbit_host = sys.argv[2]
+    #pipeline = ['mmr.core', 'tiler.concat', 'results']
+    pipeline = ['splitter', 'mmr.core', 'tiler.concat', 'results']
     count=0
-    bus = MessageBus()
+    bus = MessageBus(host = rabbit_host)
     for index in range(0,10):
         question = dataset.questions[index]
     # for question in dataset.questions:

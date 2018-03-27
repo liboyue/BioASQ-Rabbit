@@ -325,9 +325,9 @@ class Task(object):
     The Task class does all the administrative busy-work needed to manage the
     RabbitMQ queues so services only need to implement the `perform` method.
     """
-    def __init__(self, route):
+    def __init__(self, route, host='localhost'):
         """Route is a String containing the unique address for the service."""
-        self.bus = MessageBus()
+        self.bus = MessageBus(host=host)
         self.listener = BusListener(route)
         self.listener.register(self._handler)
         self.thread = False

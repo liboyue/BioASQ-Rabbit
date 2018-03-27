@@ -14,8 +14,8 @@ This code contains the implementation of Abstract method for BiRanker.
 
 
 class SoftMMR(BiRanker):
-    def __init__(self):
-        super(SoftMMR, self).__init__(route='mmr.soft')
+    def __init__(self, host='localhost'):
+        super(SoftMMR, self).__init__(route='mmr.soft', host=host)
         self.route = 'mmr.soft'
 
     # implementation of the abstract method that takes question as input and returns a ranked list of sentences as output
