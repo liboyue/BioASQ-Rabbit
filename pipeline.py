@@ -17,16 +17,16 @@ if __name__ == '__main__':
     fp.close()
 
     # The list of services to send the questions to.
-    rabbit_host = sys.argv[2]
     #pipeline = ['mmr.core', 'tiler.concat', 'results']
-    pipeline = ['splitter', 'mmr.core', 'tiler.concat', 'results']
+    pipeline = ['mmr.core', 'tiler.concat', 'results']
+    #pipeline = ['splitter', 'mmr.core', 'tiler.concat', 'results']
     count=0
-    bus = MessageBus(host = rabbit_host)
+    bus = MessageBus()
     for index in range(0,10):
         question = dataset.questions[index]
         # for question in dataset.questions:
         message = Message(body=question, route=pipeline)
-        print(question)
+        print(question.body)
         bus.publish('expand.none', message)
         count = count + 1
 
