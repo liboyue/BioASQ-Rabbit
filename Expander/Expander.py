@@ -70,6 +70,7 @@ class NoneExpander(Expander):
 
 
     def getExpansions(self, sentence):
+        print(sentence)
         return sentence
 
     # def perform(self, input):

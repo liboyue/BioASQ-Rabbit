@@ -7,6 +7,8 @@ import sys
 class Splitter(Task):
     def __init__(self, host='localhost'):
         super(Splitter, self).__init__('splitter', host=host)
+        print("init splitter")
+        self.logger.info("init splitter")
 
     def perform(self, input):
         print('\nsplitter\n\n')
@@ -42,6 +44,7 @@ if __name__ == '__main__':
     print 'Declaring splitter service'
     host = sys.argv[1]
     service = Splitter(host)
+    print("splitter host: " + host)
 
     print 'Staring splitter service'
     service.start()

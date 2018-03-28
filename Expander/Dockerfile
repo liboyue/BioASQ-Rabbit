@@ -1,6 +1,6 @@
-FROM deiis/base-image
+FROM docker.lappsgrid.org/deiis/base
 
-COPY *.py /root/
+RUN pip install pymetamap
+COPY . /root/
 WORKDIR /root
-
 ENTRYPOINT ["python", "service.py"]

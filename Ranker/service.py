@@ -10,6 +10,7 @@ import sys
 if __name__ == '__main__':
     print 'Declaring the services'
     host = sys.argv[1]
+    print("MMR host: " + host)
     services = list()
     services.append(CoreMMR(host=host))
     services.append(SoftMMR(host=host))

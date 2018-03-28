@@ -1,2 +1,2 @@
-NAME=ranker
+NAME=splitter
 include ../Makefile.master

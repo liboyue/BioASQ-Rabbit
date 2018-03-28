@@ -18,7 +18,7 @@ class HardMMR(CoreMMR):
     # constructor to instantiate CoreMMR since we want to change certain class variables, which are shown as follows
     def __init__(self, host='localhost'):
         super(HardMMR, self).__init__(route='mmr.hard', selected=1, alpha=0.5, host=host)
-        self.mmrInstance = CoreMMR()
+        self.mmrInstance = CoreMMR(host=host)
         self.mmrInstance.numSelectedSentences = 1
         self.mmrInstance.pos_dict = {}
         self.mmrInstance.alpha = 0.5

@@ -1,2 +1,2 @@
-NAME=ranker
+NAME=results
 include ../Makefile.master

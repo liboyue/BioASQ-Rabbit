@@ -25,6 +25,7 @@ class BiRanker(Task):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self, route=[], alpha=0.5, selected=10, host='localhost'):
+        print("host: " + host)
         super(BiRanker, self).__init__(route, host)
         self.alpha = alpha
         self.numSelectedSentences = selected

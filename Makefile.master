@@ -1,0 +1,12 @@
+REPO=docker.lappsgrid.org
+IMAGE=bioasq/$(NAME)
+TAG=$(REPO)/$(IMAGE)
+
+.PHONY: run
+
+docker:
+	docker build -t $(IMAGE) .
+
+#push:
+#	docker tag $(IMAGE) $(TAG)
+#	docker push $(TAG)

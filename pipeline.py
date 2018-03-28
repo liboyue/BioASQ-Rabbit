@@ -24,8 +24,9 @@ if __name__ == '__main__':
     bus = MessageBus(host = rabbit_host)
     for index in range(0,10):
         question = dataset.questions[index]
-    # for question in dataset.questions:
+        # for question in dataset.questions:
         message = Message(body=question, route=pipeline)
+        print(question)
         bus.publish('expand.none', message)
         count = count + 1
 

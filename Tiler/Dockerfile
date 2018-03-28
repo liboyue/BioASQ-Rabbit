@@ -1,7 +1,5 @@
-FROM deiis/base-image
+FROM docker.lappsgrid.org/deiis/base
 
-COPY *.py /root/
-COPY logging.ini /root
-
+COPY . /root/
 WORKDIR /root
 ENTRYPOINT ["python", "service.py"]
